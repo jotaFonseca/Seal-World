@@ -1,0 +1,156 @@
+/* 
+ Comece sempre por fazer a estilização universal para resetar tudo, depois as variáveis que irá utilizar,
+ em seguida os elementos padrões gerais e por fim estilize seção por seção.
+ */
+* {
+    box-sizing: border-box; /* border-box - a tamanho da caixainclui a borda, o conteúdo e o preenchimento como padding e margin*/
+    font-family: "Oxygen", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-background: #030207;
+    --color-white: #fff;
+    --color-blue: #1474b4;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-white);
+}
+
+a {
+    color: var(--color-blue);
+}
+
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.1), var(--color-background));
+    position: relative; /*postion relative: um elemento pai no CSS, você está dizendo ao navegador que este elemento será usado como ponto de referência para qualquer elemento filho que tenha position: absolute;. Em outras palavras, o elemento pai define um contexto de posicionamento para os elementos filhos absolutos.*/
+    min-height: 100vh;
+}
+
+.hero__background {
+    object-fit: cover; /*object fit: cover - deixar imagem cobrir toda a tela de fundo */
+    position: absolute; /* position absolute: um elemento filho, você está dizendo ao navegador que esse elemento deve ser posicionado em relação ao elemento pai que tenha a propriedade position: relative; mais próximo na hierarquia.*/
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: -999;
+}
+
+.hero__foreground {
+    color: var(--color-white);
+    padding-top: 40vh;
+    text-align: center;
+}
+
+.hero__title {
+    font-size: 5rem;
+    font-weight: 300;
+}
+
+.hero__text {
+    margin-top: 2rem;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+}
+
+.section {
+    overflow: hidden; /* oculta o conteúdo que ultrapassa o limite da box pai */
+    padding: 0 8rem;
+    text-align: center;
+}
+
+.section__title {
+    font-size: 3rem;
+    font-weight: 300;
+    margin: 4rem auto;
+}
+
+.section__img,
+.section__img-inline {
+    border-radius: .75rem;
+    /* eixo x, eixo y, blur, expansão/recuo, cor */
+    box-shadow: 0 1rem 2rem -0.5rem rgba(20, 116, 180, 0.25) ;
+    object-fit: cover;
+    object-position: top;
+    position: relative;
+    max-height: 30rem;
+    width: 100%;
+}
+
+.section__text,
+.section__text-inline {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    margin: 4rem auto;
+}
+
+.section__img-inline {
+    border-top-left-radius: 4rem;
+    border-bottom-right-radius: 4rem;
+    float: left; /* posiciona imagem na esquerda, porém, sai do box pai e fica flutuando */
+    margin-right: 4rem;
+    margin-bottom: 2rem;
+    height: 25rem;
+    width: 20rem;
+}
+
+.section__text-inline {
+    margin-top: 6rem;
+    text-align: left;
+}
+
+.section__text-inline > p {
+    margin-top: 1.5rem;
+}
+
+#hangouts img{
+    object-position: center;
+}
+
+.gallery__img {
+    border-radius: .75rem;
+    height: 16rem;
+    width: 16rem;
+    object-fit: cover;
+    transform: rotate(-2deg);
+}
+
+.gallery__img-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.gallery__img-wrapper + .gallery__img-wrapper{
+    margin-left: 3rem;
+    margin-top: 3rem;
+}
+
+.gallery__img-wrapper:nth-child(even) > .gallery__img{
+    top:1rem;
+    transform: rotate(2deg);
+}
+
+.gallery__img-wrapper::after {
+    content: "";
+    background-color: rgb(228, 26, 26);
+    border-radius: 999px;
+    display: block;
+    height: 1.25rem;
+    width: 1.25rem;
+    position: absolute;
+    top: .25rem;
+    right: 1rem;
+}
+
+.gallery__img-wrapper:nth-child(even)::after {
+    left: 1rem;
+}
+
+.footer {
+    margin-top: 4rem;
+    padding: 2rem;
+    text-align: center;
+}
